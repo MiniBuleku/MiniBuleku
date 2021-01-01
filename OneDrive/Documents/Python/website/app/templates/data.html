@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'>
+        <style>
+            div.data{
+                margin-top: 20px;
+                margin-left: 20px;
+                font-family:"Anaheim"
+            }
+            div.space{
+                margin-left: 62px
+            }
+
+            .underline_text{
+                border-bottom: solid 2px;
+                display:inline;
+                padding-bottom: 10px
+            }
+
+            h2 {
+                font-weight: normal
+            }
+
+            form.b {
+                margin-left: 20px;
+                display: inline
+            }
+
+        </style>
+    </head>
+    <body>
+        {% if word_data == "!NF!" %}
+            <h3 style="margin-left: 20px; margin-top: 20px; text-decoration-line: underline;">Please Try Again<form class="b" action="/index"><button type="submit">Back</button></form></h3>
+        {% else %}
+            <div class="data">
+                <h2><b><u>Usage</u></b>:<form class="b" action="/index"><button type="submit">Back</button></form><br><br>
+                    {% for pattern in word_data["Usage"] %}
+                        {{ pattern }}<br><br>
+                    {% endfor %}
+                </h2><hr><br>
+            {% if "Collocates" in word_data %}
+                <h2><b><u>Collocates</u></b>:<br><br>
+                    {% for category in word_data["Collocates"] %}
+                        {{ category + " - " + ", ".join(word_data["Collocates"][category]) }}<br><br>
+                    {% endfor %}
+                </h2><hr>
+            {% endif %}
+            {% if word_data["Example Sentences"] |length != 0 %}
+                <br><h2><b><u>Example Sentences</u></b>:<br><br>
+                    {% for pattern in word_data["Example Sentences"] %}
+                        {{ pattern }}<br>
+                    {% endfor %}
+            {% endif %}
+                </h2>
+                </div>
+            </div>
+
+
+        
+        {% endif %}
+    </body>
+</html>
+
+<!-- {% for key in word_data %}
+    <h3>{{ key }} </h3>
+    {% for element in word_data[key] %}
+        {% if key == "搭配詞" %}
+            {% for category in element %}
+                <p>{{ element + " - " + ", ".join(word_data["搭配詞"][category])}}</p>
+            {% endfor %}
+        {% else %}
+            <p>{{ element }}</p>
+        {% endif %}
+    {% endfor %}
+    <br>
+{% endfor %}

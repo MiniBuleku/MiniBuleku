@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Theta: Home</title>
+        <link href='https://fonts.googleapis.com/css?family=Anaheim' rel='stylesheet'>
+        <style>
+            img.center {
+                display:block;
+                margin-left:auto;
+                margin-right:auto
+            }
+
+            div.f {
+                margin-left:auto;
+                margin-right:auto;
+                width:500px;
+                text-align:center;
+                font-family:"Anaheim";
+                border-style:solid;
+                border-width:1.5px;
+                border-radius:8px
+            }
+
+            h3.b{
+                line-height: 80%;
+                text-align: center;
+                font-weight: normal
+            }
+        </style>
+    </head>
+    <body>
+        <img src="/static/logo.jpg" style="height:350" class="center">
+        <br>
+        <div class="f">
+            <h2 style="font-size:25px">Enter Verb Below:</h2>
+            <form action="/data" method="post" nonvalidate>
+                {{ form.hidden_tag() }}
+                <p>{{ form.word(size=32, value=rand) }}</p>
+                <p value="Let's Theta!">{{ form.submit() }} </p>
+            </form>
+        <br>
+        </div>
+        <br>
+        <br>
+        <p style="font-size:25px; text-align: center"><b>Developed by Jacob Kodner</b></p>
+        <h3 class="b">Undergraduate | Campuswide Honors Collegium</h3>
+        <h3 class="b">Department of Language Science</h3>
+        <h3 class="b">University of California, Irvine</h3>
+        <br><br>
+    </body>
+</html>
